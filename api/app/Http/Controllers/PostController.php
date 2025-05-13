@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -25,7 +26,7 @@ class PostController extends Controller
             'body' => ['required'],
         ]);
 
-        $post = Post::create($validatedFields);
+        $post = $request->user()->posts()->create($validatedFields);
 
         return $post;
     }
@@ -43,6 +44,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        Gate::authorize('modify', $post);
+
         $validatedFields = $request->validate([
             'title' => ['required'],
             'body' => ['required'],
@@ -58,6 +61,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        Gate::authorize('modify', $post);
+
         $post->delete();
 
         return ['message' => 'The post was deleted.'];
