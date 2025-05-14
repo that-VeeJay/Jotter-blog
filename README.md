@@ -1,15 +1,6 @@
 # Jotter-Blog
 
-A brief description of what this project does and who it's for
-
-
-## Features
-
-- Create, update, and delete blog posts
-- Posts stored in a MySQL database via Laravel API
-- Responsive frontend built with React and Tailwind CSS
-
-
+A full-stack blog application with a Laravel API backend and a React frontend, featuring CRUD functionality for posts, user authentication, and a responsive UI with Tailwind CSS.
 
 ## 🚀 Installation
 
