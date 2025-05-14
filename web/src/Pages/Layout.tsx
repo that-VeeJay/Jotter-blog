@@ -17,7 +17,7 @@ export default function Layout() {
     });
 
     const data = await response.json();
-    
+
     if (response.ok) {
       setUser(null);
       setToken(null);
@@ -38,8 +38,14 @@ export default function Layout() {
               Home
             </Link>
             {user ? (
-              <div className="flex space-x-5">
+              <div className="flex space-x-5 items-center">
                 <p>Welcome back, {user.name}!</p>
+                <Link
+                  to="/create"
+                  className="py-2 px-3 rounded hover:bg-zinc-700 transition duration-200"
+                >
+                  New Post
+                </Link>
                 <form onSubmit={handleLogout}>
                   <button className="text-red-500">Logout</button>
                 </form>
